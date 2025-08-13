@@ -705,6 +705,9 @@ class PluginFieldsField extends CommonDBChild
         echo Html::scriptBlock('$(document).ready(function() {
             redipsInit()
         });');
+        
+        $this->showFormButtons();
+    
     }
 
     public function showForm($ID, $options = [])
@@ -841,7 +844,7 @@ class PluginFieldsField extends CommonDBChild
 
         echo '</table>';
         Html::closeForm();
-
+        
         return true;
     }
 

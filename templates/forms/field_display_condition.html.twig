@@ -36,7 +36,7 @@ GOVNO
          <div class="d-flex flex-row flex-wrap flex-xl-nowrap">
             <div class="row flex-row align-items-start flex-grow-1">
                <div class="row flex-row">
-                  {{ fields.dropdownArrayField('itemtype', field_display_condition.fields['itemtype']|default(null), container_itemtypes, __('Item type'), {'rand': rand, 'display_emptychoice': true}) }}
+                  {{ fields.dropdownArrayField('itemtype', field_display_condition.fields['itemtype']|default(null), field_itemtypes, __('Item type'), {'rand': rand, 'display_emptychoice': true}) }}
                   {% do call('Ajax::updateItemOnSelectEvent',
                      [
                         'dropdown_itemtype' ~ rand,

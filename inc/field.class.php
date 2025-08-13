@@ -875,18 +875,20 @@ class PluginFieldsField extends CommonDBChild
             foreach($fields as $field)
             {
                 $id = $field['id'];
-                Toolbox::logInFile("FieldsD", "ITEMS YOOOOO $id");
-
+                
+                $iterator = $DB->request([
+                    'SELECT' => '*',
+                    'FROM'   => PluginFieldsFieldDisplayCondition::getTable(),
+                    'WHERE'  => [
+                        'plugin_fields_fields_id' => $id,
+                    ],
+                ]);
+                $c = count($iterator);
+                Toolbox::logInFile("FieldsD", "$c");
             }
 
-            //$iterator = $DB->request([
-            //    'SELECT' => ['plugin_fields_fields_id'],
-            //    'FROM'   => PluginFieldsFieldDisplayCondition::getTable(),
-            //    'WHERE'  => [
-            //        'id' => $field['id'],
-            //    ],
-            //]);
-            //
+           
+            
             //if($dc->computeDisplayField($field, $field['id']))
             //{
             //

@@ -808,7 +808,7 @@ class PluginFieldsField extends CommonDBChild
         echo '</td>';
         echo '</tr>';
 
-        $this->showFormButtons($options);
+        //$this->showFormButtons($options);
 
         return true;
     }

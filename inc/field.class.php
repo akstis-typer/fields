@@ -1248,18 +1248,6 @@ JAVASCRIPT
 
             $field['value'] = $value;
         }
-        $dmp = PluginTickethandlingEvent::vardump($item);
-        Toolbox::logInFile("FieldsDebug", "ITEM: $dmp");
-        $dmp = PluginTickethandlingEvent::vardump($fields);
-        Toolbox::logInFile("FieldsDebug", "FIELDS: $dmp");
-        $dmp = PluginTickethandlingEvent::vardump($canedit);
-        Toolbox::logInFile("FieldsDebug", "CANEDIT: $dmp");
-        $dmp = PluginTickethandlingEvent::vardump($massiveaction);
-        Toolbox::logInFile("FieldsDebug", "MASSIVEACTION: $dmp");
-        $dmp = PluginTickethandlingEvent::vardump($container_obj);
-        Toolbox::logInFile("FieldsDebug", "CONTAINEROBJ: $dmp");
-        $dmp = PluginTickethandlingEvent::vardump($field_options);
-        Toolbox::logInFile("FieldsDebug", "FIELDOPTIONS: $dmp");
 
         $html = TemplateRenderer::getInstance()->render('@fields/fields.html.twig', [
             'item'          => $item,

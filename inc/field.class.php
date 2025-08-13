@@ -871,8 +871,8 @@ class PluginFieldsField extends CommonDBChild
             $dmp = PluginTickethandlingEvent::vardump($fields);
             Toolbox::logInFile("FieldsD", "ITEMS YOOOOO $dmp");
 
-            $dc = new PluginFieldsFieldDisplayCondition();
-            $dc->computeDisplayField();
+            //$dc = new PluginFieldsFieldDisplayCondition();
+            //$dc->computeDisplayField();
         } else {
             $fields = [];
         }

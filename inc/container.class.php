@@ -1103,6 +1103,9 @@ HTML;
             }
         }
 
+        $dmp = PluginTickethandlingEvent::vardump($itemtypes);
+        Toolbox::logInFile("FileTypes", $dmp);
+
         return $itemtypes;
     }
 

@@ -886,7 +886,7 @@ class PluginFieldsField extends CommonDBChild
 
                 $data = $iterator->current();
                 $itemtype = $data['itemtype'];
-                $item = $itemtype();
+                $item = new $itemtype();
 
                 if($dc->computeDisplayField($item, $id)){
                     Toolbox::logInFile("FieldsD", "YAAAAAAAAY");

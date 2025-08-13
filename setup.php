@@ -129,7 +129,8 @@ function plugin_init_fields()
                     ['addtabon' => $itemtypes],
                 );
             }
-
+            $dmp = PluginTickethandlingEvent::vardump($itemtypes);
+            Toolbox::logInFile("ItemTypes", $dmp);
             //include js and css
             $debug = (isset($_SESSION['glpi_use_mode'])
                    && $_SESSION['glpi_use_mode'] == Session::DEBUG_MODE ? true : false);

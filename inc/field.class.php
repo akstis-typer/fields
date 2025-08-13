@@ -868,6 +868,11 @@ class PluginFieldsField extends CommonDBChild
                 ],
                 'ranking',
             );
+            $dmp = PluginTickethandlingEvent::vardump($fields);
+            Toolbox::logInFile("FieldsD", "ITEMS YOOOOO $dmp");
+
+            $dc = new PluginFieldsFieldDisplayCondition();
+            $dc->computeDisplayField();
         } else {
             $fields = [];
         }

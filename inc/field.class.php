@@ -891,14 +891,6 @@ class PluginFieldsField extends CommonDBChild
                     Toolbox::logInFile("FieldsD", "YAAAAAAAAY");
                 }
             }
-
-           
-            
-            //if($dc->computeDisplayField($field, $field['id']))
-            //{
-            //
-            //}
-            
         } else {
             $fields = [];
         }

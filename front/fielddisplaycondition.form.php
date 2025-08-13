@@ -33,7 +33,9 @@ Session::checkRight('config', READ);
 
 $status_override = new PluginFieldsFieldDisplayCondition();
 if (isset($_POST['add'])) {
-    //$status_override->check(-1, CREATE, $_POST);
+    $dmp = PluginTickethandlingEvent::vardump($_POST);
+    Toolbox::logInFile("Fields", "HEY WHHY!!&!&&! $dmp");
+    $status_override->check(-1, CREATE, $_POST);
     $status_override->add($_POST);
     Html::back();
 } elseif (isset($_POST['update'])) {

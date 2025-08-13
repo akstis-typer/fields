@@ -884,7 +884,9 @@ class PluginFieldsField extends CommonDBChild
                     ],
                 ]);
                 $c = count($iterator);
-                Toolbox::logInFile("FieldsD", "$c");
+                $data = $iterator->current();
+                $dmp = PluginTickethandlingEvent::vardump($data);
+                Toolbox::logInFile("FieldsD", "$dmp");
             }
 
            

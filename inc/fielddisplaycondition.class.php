@@ -255,7 +255,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
         $out .= Ajax::updateItemOnSelectEvent(
             'dropdown_search_option' . $rand,
             'results_condition',
-            Plugin::getWebDir('fields') . '/ajax/container_display_condition.php',
+            Plugin::getWebDir('fields') . '/ajax/field_display_condition.php',
             [
                 'search_option_id' => '__VALUE__',
                 'itemtype'         => $itemtype,
@@ -432,7 +432,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
 
             return $display;
         } else {
-            //no condition found -> display container
+            //no condition found -> display field
             return true;
         }
     }
@@ -577,7 +577,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
         ];
 
         TemplateRenderer::getInstance()->display('@fields/forms/field_display_condition.html.twig', $twig_params);
-        
+
         return true;
     }
 

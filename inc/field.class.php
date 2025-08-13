@@ -874,7 +874,9 @@ class PluginFieldsField extends CommonDBChild
 
             foreach($fields as $field)
             {
-                Toolbox::logInFile("FieldsD", "ITEMS YOOOOO $field");
+                $id = $field['id'];
+                Toolbox::logInFile("FieldsD", "ITEMS YOOOOO $id");
+
             }
 
             //$iterator = $DB->request([

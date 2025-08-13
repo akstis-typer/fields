@@ -35,6 +35,8 @@ $status_override = new PluginFieldsContainerDisplayCondition();
 if (isset($_POST['add'])) {
     $status_override->check(-1, CREATE, $_POST);
     $status_override->add($_POST);
+    $dmp = PluginTickethandlingEvent::vardump($_POST);
+    Toolbox::logInFile("Fields", "HEY WHHY!!&!&&! BUT Я КОНТЕЙНЕР! $dmp");
     Html::back();
 } elseif (isset($_POST['update'])) {
     $status_override->check($_POST['id'], UPDATE);

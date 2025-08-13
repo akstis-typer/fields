@@ -558,7 +558,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
                 ? []
                 : self::removeBlackListedOption(Search::getOptions($this->fields['itemtype']), $this->fields['itemtype']),
         ];
-        
+        Toolbox::logInFile("Fields", "HI IM SHOW FORM ACTION!");
         TemplateRenderer::getInstance()->display('@fields/forms/field_display_condition.html.twig', $twig_params);
 
         return true;

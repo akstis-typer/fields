@@ -29,7 +29,7 @@
  */
 
 include('../../../inc/includes.php');
-Session::checkRight('config', READ);
+//Session::checkRight('config', READ);
 
 $status_override = new PluginFieldsFieldDisplayCondition();
 if (isset($_POST['add'])) {

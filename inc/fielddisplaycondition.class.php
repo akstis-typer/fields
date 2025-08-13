@@ -425,6 +425,8 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
             foreach ($found_dc as $data) {
                 $displayCondition->getFromDB($data['id']);
                 $result = $displayCondition->checkCondition($item);
+                $v = $result ? "True" : "False";
+                Toolbox::logInFile("FieldsD", "Checking $v");
                 if (!$result) {
                     return $result;
                 }

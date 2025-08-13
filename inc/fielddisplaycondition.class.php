@@ -540,7 +540,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
         $twig_params = [
             'field_id'                 => $field_id,
             'field_display_conditions' => self::getDisplayConditionForField($field_id),
-            'has_fields'                   => false,
+            'has_fields'               => true,
         ];
 
         TemplateRenderer::getInstance()->display('@fields/field_display_conditions.html.twig', $twig_params);

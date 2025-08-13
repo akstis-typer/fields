@@ -416,11 +416,10 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
 
     public function computeDisplayField($item, $field_id)
     {
-        
         //load all condition for itemtype and field
         $displayCondition = new self();
-        return;
         $found_dc         = $displayCondition->find(['itemtype' => get_class($item), 'plugin_fields_fields_id' => $field_id]);
+        return;
         if (count($found_dc)) {
             $display = true;
             foreach ($found_dc as $data) {

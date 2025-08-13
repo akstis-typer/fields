@@ -205,13 +205,22 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
 
         $results = [];
 
-        $container_id = $DB->request([
+        $container_iterator = $DB->request([
             'SELECT' => ['plugin_fields_containers_id'],
             'FROM'   => PluginFieldsField::getTable(),
             'WHERE'  => [
                 'id' => $field_id,
             ],
         ]);
+
+        $container_id = -1;
+        if(count($container_iterator)) {
+            $container_id = $container_iterator->current()["plugin_fields_containers_id"];
+        }
+        Toolbox::logInFile("Fields", "HEY THERE IS CONTAINER ID $container_id");
+        if($container_id === -1){
+            return $results;
+        }
 
         $iterator = $DB->request([
             'SELECT' => ['itemtypes'],

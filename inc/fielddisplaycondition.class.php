@@ -303,7 +303,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
             $twig_params['list_conditions'] = self::getComparisonOperators();
         }
 
-        TemplateRenderer::getInstance()->display('@fields/forms/container_display_condition_so_condition.html.twig', $twig_params);
+        TemplateRenderer::getInstance()->display('@fields/forms/field_display_condition_so_condition.html.twig', $twig_params);
     }
 
     public static function getRawValue($searchoption_id, $itemtype, $value)

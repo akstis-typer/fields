@@ -577,10 +577,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
         ];
 
         TemplateRenderer::getInstance()->display('@fields/forms/field_display_condition.html.twig', $twig_params);
-
-        $dmp = PluginTickethandlingEvent::vardump($twig_params);
-        Toolbox::logInFile("Fields", "HI IM SHOW FORM ACTION! WITH PARAMETERS $dmp");
-
+        
         return true;
     }
 

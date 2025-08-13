@@ -237,8 +237,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
                 $results[$itemtype] = $itemtype::getTypeName();
             }
         }
-        $dmp = PluginTickethandlingEvent::vardump($results);
-        Toolbox::logInFile("Fields", "THERE IS RESULTS OMG OMG^^^^^^ $dmp");
+          
         return $results;
     }
 

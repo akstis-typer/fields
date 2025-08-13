@@ -809,7 +809,8 @@ class PluginFieldsField extends CommonDBChild
         echo '</tr>';
 
         $this->showFormButtons($options);
-
+        //TODO
+        TemplateRenderer::getInstance()->render("@fields/field_display_conditions.html.twig");
         return true;
     }
 

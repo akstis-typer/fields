@@ -858,6 +858,7 @@ class PluginFieldsField extends CommonDBChild
      */
     public static function showDomContainer($id, $item, $type = 'dom', $subtype = '', $field_options = [])
     {
+        global $DB;
         if ($id != 0) {
             //get fields for this container
             $field_obj = new self();
@@ -868,11 +869,27 @@ class PluginFieldsField extends CommonDBChild
                 ],
                 'ranking',
             );
-            $dmp = PluginTickethandlingEvent::vardump($fields);
-            Toolbox::logInFile("FieldsD", "ITEMS YOOOOO $dmp");
+            
+            $dc = new PluginFieldsFieldDisplayCondition();
 
-            //$dc = new PluginFieldsFieldDisplayCondition();
-            //$dc->computeDisplayField();
+            foreach($fields as $field)
+            {
+                Toolbox::logInFile("FieldsD", "ITEMS YOOOOO $field");
+            }
+
+            //$iterator = $DB->request([
+            //    'SELECT' => ['plugin_fields_fields_id'],
+            //    'FROM'   => PluginFieldsFieldDisplayCondition::getTable(),
+            //    'WHERE'  => [
+            //        'id' => $field['id'],
+            //    ],
+            //]);
+            //
+            //if($dc->computeDisplayField($field, $field['id']))
+            //{
+            //
+            //}
+            
         } else {
             $fields = [];
         }

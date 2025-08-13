@@ -217,8 +217,8 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
         if(count($container_iterator)) {
             $container_id = $container_iterator->current()["plugin_fields_containers_id"];
         }
-        Toolbox::logInFile("Fields", "HEY THERE IS CONTAINER ID $container_id");
-        if($container_id === -1){
+
+        if($container_id < 0){
             return $results;
         }
 
@@ -237,7 +237,8 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
                 $results[$itemtype] = $itemtype::getTypeName();
             }
         }
-
+        $dmp = PluginTickethandlingEvent::vardump($results);
+        Toolbox::logInFile("Fields", "THERE IS RESULTS OMG OMG^^^^^^ $dmp");
         return $results;
     }
 

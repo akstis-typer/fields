@@ -63,7 +63,7 @@ if (isset($_POST['add'])) {
     $field->display(['id' => $_GET['id'],
         'parent_id'       => $field->fields['plugin_fields_containers_id'],
     ]);
-    $field['fields']['FuckingFuck'] = true;
+    
     $dmp = PluginTickethandlingEvent::vardump($field);
     Toolbox::logInFile("FieldsDebug", $dmp);
     Html::footer();

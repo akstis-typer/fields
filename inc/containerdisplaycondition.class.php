@@ -564,6 +564,10 @@ class PluginFieldsContainerDisplayCondition extends CommonDBChild
         ];
         TemplateRenderer::getInstance()->display('@fields/forms/container_display_condition.html.twig', $twig_params);
 
+        $dmp = PluginTickethandlingEvent::vardump($twig_params);
+        Toolbox::logInFile("Fields", "HI IM SHOW FORM ACTION BUT I'M CONTAINER!! WITH PARAMETERS $dmp");
+
+
         return true;
     }
 

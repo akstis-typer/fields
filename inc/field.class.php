@@ -563,7 +563,7 @@ class PluginFieldsField extends CommonDBChild
         $ong = [];
         $this->addDefaultFormTab($ong);
         $this->addStandardTab('PluginFieldsLabelTranslation', $ong, $options);
-        $this->addStandardTab('ShittyShit Shits', $ong, $options);
+        $this->addStandardTab('PluginFieldsFieldDisplayCondition', $ong, $options);
 
         return $ong;
     }

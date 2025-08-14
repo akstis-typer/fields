@@ -64,7 +64,5 @@ if (isset($_POST['add'])) {
         'parent_id'       => $field->fields['plugin_fields_containers_id'],
     ]);
 
-    $dmp = PluginTickethandlingEvent::vardump($field);
-    Toolbox::logInFile("FieldsDebug", $dmp);
     Html::footer();
 }

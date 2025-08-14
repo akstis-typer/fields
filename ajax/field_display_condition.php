@@ -35,7 +35,6 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] === 'get_add_form') {
         $status_override = new PluginFieldsFieldDisplayCondition();
         $status_override->showForm(0, $_GET);
-        Toolbox::logInFile("Fields", "HI IM GET ADD FORM ACTION!");
     } elseif ($_GET['action'] === 'get_edit_form') {
         $status_override = new PluginFieldsFieldDisplayCondition();
         $status_override->getFromDB($_GET['id']);

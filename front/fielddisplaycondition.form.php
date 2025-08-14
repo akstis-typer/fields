@@ -35,8 +35,6 @@ $status_override = new PluginFieldsFieldDisplayCondition();
 if (isset($_POST['add'])) {
     $_POST["entities_id"] = 0;
     $_POST["is_recursive"] = 0;
-    $dmp = PluginTickethandlingEvent::vardump($_POST);
-    Toolbox::logInFile("Fields", "HEY WHHY!!&!&&! $dmp");
     $status_override->check(-1, CREATE, $_POST);
     $status_override->add($_POST);
     Html::back();

@@ -914,10 +914,10 @@ class PluginFieldsField extends CommonDBChild
     {
         $item = $params['item'];
 
-        if ($item->fields['type'] == "") {
+        if (isset($item->fields['type']) && $item->fields['type'] == "") {
             $item->fields['type'] = $params['options']['type'];
         }
-        if ($item->fields['itilcategories_id'] == "") {
+        if (isset($item->fields['itilcategories_id']) &&$item->fields['itilcategories_id'] == "") {
             $item->fields['itilcategories_id'] = $params['options']['itilcategories_id'];
         }
         $functions = array_column(debug_backtrace(), 'function');

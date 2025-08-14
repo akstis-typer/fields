@@ -889,10 +889,10 @@ class PluginFieldsField extends CommonDBChild
                 
                 if(!$res)
                 {
-                    $fields_to_pass += $field;
+                    array_push($fields_to_pass, $field);
                 }                
             }
-            
+
             $fields = $fields_to_pass;
         } else {
             $fields = [];

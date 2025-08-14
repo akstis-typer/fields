@@ -338,7 +338,7 @@ msgstr "показать"
 msgid "under"
 msgstr "под"
 
-#: templates/container_display_conditions.html.twig:35
+#: templates/container_display_conditions.html.twig
 msgid "The engine is used for hide block when main object meets condition"
 msgstr "Блок скроется, когда условие выполнится"
 

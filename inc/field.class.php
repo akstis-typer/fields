@@ -887,7 +887,7 @@ class PluginFieldsField extends CommonDBChild
 
                 $res = $dc->computeDisplayField($item, $id);
                 
-                if($res == false)
+                if(!$res)
                 {
                     array_push($fields_to_pass, $field);
                 }                

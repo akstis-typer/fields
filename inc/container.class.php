@@ -1523,8 +1523,6 @@ HTML;
             $field['label']    = PluginFieldsLabelTranslation::getLabelFor($field);
             
             $dc = new PluginFieldsFieldDisplayCondition();
-            $dmp = PluginTickethandlingEvent::vardump($data);
-            Toolbox::logInFile("FieldD", "Data $dmp");
             
             // Check mandatory fields
             if (

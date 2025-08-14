@@ -342,6 +342,11 @@ msgstr "под"
 msgid "The engine is used for hide block when main object meets condition"
 msgstr "Блок скроется, когда условие выполнится"
 
+#: templates/field_display_conditions.html.twig
+msgid "The engine is used for hide block when main object meets condition"
+msgstr "Блок скроется, когда условие выполнится"
+
+
 #: inc/field_display_condition.class.php:
 msgid "Add condition to hide field"
 msgstr "Добавить условие скрытия поля"
@@ -349,12 +354,13 @@ msgstr "Добавить условие скрытия поля"
 msgid "Edit condition to hide field"
 msgstr "Редактировать условие скрытия поля"
 
-msgid "Edit condition to hide block"
-msgstr "Редактировать условие скрытия блока"
-
 msgid "Condition to hide field"
 msgid_plural "Conditions to hide field"
 msgstr[0] "Условие для скрытия поля"
 msgstr[1] "Условия для скрытия поля"
 msgstr[2] "Условия для скрытия поля"
 msgstr[3] "Условия для скрытия поля"
+
+#: inc/container_display_condition.class.php:
+msgid "Edit condition to hide block"
+msgstr "Редактировать условие скрытия блока"

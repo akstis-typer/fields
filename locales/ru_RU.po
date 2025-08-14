@@ -351,3 +351,6 @@ msgstr "Редактировать условие скрытия поля"
 
 msgid "Edit condition to hide block"
 msgstr "Редактировать условие скрытия блока"
+
+msgid "Conditions to hide field"
+msgstr "Условия скрятия поля"

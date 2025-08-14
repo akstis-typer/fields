@@ -343,8 +343,8 @@ msgid "The engine is used for hide block when main object meets condition"
 msgstr "Блок скроется, когда условие выполнится"
 
 #: templates/field_display_conditions.html.twig
-msgid "The engine is used for hide block when main object meets condition"
-msgstr "Блок скроется, когда условие выполнится"
+msgid "The engine is used for hide field when main object meets condition"
+msgstr "Поле скроется, когда условие выполнится"
 
 
 #: inc/field_display_condition.class.php:

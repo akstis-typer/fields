@@ -337,3 +337,17 @@ msgstr "показать"
 #: inc/containerdisplaycondition.class.php:136
 msgid "under"
 msgstr "под"
+
+#: templates/container_display_conditions.html.twig:35
+msgid "The engine is used for hide block when main object meets condition"
+msgstr "Блок скроется, когда условие выполнится"
+
+#: inc/field_display_condition.class.php:
+msgid "Add condition to hide field"
+msgstr "Добавить условие скрытия поля"
+
+msgid "Edit condition to hide field"
+msgstr "Редактировать условие скрытия поля"
+
+msgid "Edit condition to hide block"
+msgstr "Редактировать условие скрытия блока"

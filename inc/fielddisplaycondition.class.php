@@ -414,21 +414,19 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
         return $allowed_so;
     }
 
-    public function computeDisplayField($item, $field_id)
+    public function computeDisplayField($item, $field_id, $use_or = true)
     {
         //load all condition for itemtype and field
         $displayCondition = new self();
         $found_dc         = $displayCondition->find(['itemtype' => get_class($item), 'plugin_fields_fields_id' => $field_id]);
         
         if (count($found_dc)) {
-            $display = true;
+            $display = true && !$use_or;
             foreach ($found_dc as $data) {
                 $displayCondition->getFromDB($data['id']);
                 $result = $displayCondition->checkCondition($item);
                 
-                $dmp = PluginTickethandlingEvent::vardump($displayCondition);
-                Toolbox::logInFile("FieldsD", "Display condition: $dmp");
-                if (!$result) {
+                if ($result === $use_or) {
                     return $result;
                 }
             }

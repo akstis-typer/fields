@@ -871,7 +871,8 @@ class PluginFieldsField extends CommonDBChild
             );
             
             $dc = new PluginFieldsFieldDisplayCondition();
-
+            $fields_to_pass = [];
+            
             foreach($fields as $field)
             {
                 $id = $field['id'];
@@ -884,12 +885,15 @@ class PluginFieldsField extends CommonDBChild
                     ],
                 ]);
 
-                $dmp = PluginTickethandlingEvent::vardump($item);
                 $res = $dc->computeDisplayField($item, $id);
-                $val = $res ? "True" : "False";
-                Toolbox::logInFile("FieldsD", "FFFFFFFFFFFFFF $val | $dmp");
                 
+                if(!$res)
+                {
+                    $fields_to_pass += $field;
+                }                
             }
+            
+            $fields = $fields_to_pass;
         } else {
             $fields = [];
         }

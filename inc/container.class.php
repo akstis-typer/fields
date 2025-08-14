@@ -1523,10 +1523,13 @@ HTML;
             $field['itemtype'] = PluginFieldsField::getType();
             $field['label']    = PluginFieldsLabelTranslation::getLabelFor($field);
             $dc = new PluginFieldsFieldDisplayCondition();
+            $dmp = PluginTickethandlingEvent::vardump($data);
+            Toolbox::logInFile("FieldD", "Data $dmp");
+            
             // Check mandatory fields
             if (
                 $field['mandatory'] == 1
-                && $dc->computeDisplayField($glpi_item, $field['id'])
+                //&& $dc->computeDisplayField($glpi_item, $field['id'])
                 && (
                     empty($value)
                     || (($field['type'] === 'dropdown' || preg_match('/^dropdown-.+/i', $field['type'])) && $value == 0)

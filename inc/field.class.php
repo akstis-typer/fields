@@ -884,13 +884,10 @@ class PluginFieldsField extends CommonDBChild
                     ],
                 ]);
 
-                $data = $iterator->current();
-                $itemtype = $data['itemtype'];
-                $item = new $itemtype();
-
-                $res = $dc->computeDisplayField($item, $id);
-                $val = $res ? "True" : "False";
-                Toolbox::logInFile("FieldsD", "YAAAAAAAAY $val");
+                $dmp = PluginTickethandlingEvent::vardump($item);
+                //$res = $dc->computeDisplayField($item, $id);
+                //$val = $res ? "True" : "False";
+                Toolbox::logInFile("FieldsD", "FFFFFFFFFFFFFF $dmp");
                 
             }
         } else {

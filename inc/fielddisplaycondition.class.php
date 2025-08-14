@@ -425,9 +425,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
             foreach ($found_dc as $data) {
                 $displayCondition->getFromDB($data['id']);
                 $result = $displayCondition->checkCondition($item);
-                $v = $result ? "True" : "False";
-                $dmp = PluginTickethandlingEvent::vardump($data);
-                Toolbox::logInFile("FieldsD", "Checking $v | $dmp");
+               
                 if (!$result) {
                     return $result;
                 }
@@ -446,8 +444,6 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
         $condition    = $this->fields['condition'];
         $searchOption = Search::getOptions(get_class($item))[$this->fields['search_option']];
         
-        $dmp = PluginTickethandlingEvent::vardump($searchOption);
-        Toolbox::logInFile("FieldsD", "Checking..... $dmp");
         $fields = array_merge($item->fields, $item->input);
 
         switch ($condition) {

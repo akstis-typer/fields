@@ -425,7 +425,9 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
             foreach ($found_dc as $data) {
                 $displayCondition->getFromDB($data['id']);
                 $result = $displayCondition->checkCondition($item);
-               
+                
+                $dmp = PluginTickethandlingEvent::vardump($displayCondition);
+                Toolbox::logInFile("FieldsD", "Display condition: $dmp");
                 if (!$result) {
                     return $result;
                 }

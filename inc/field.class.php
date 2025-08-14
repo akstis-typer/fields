@@ -889,7 +889,8 @@ class PluginFieldsField extends CommonDBChild
                 $v = $res ? "TRUE" : "FALSE";
                 $dmp = PluginTickethandlingEvent::vardump($field);
                 Toolbox::logInFile("FieldsD", "RESULT: $v | $dmp");
-                if(!$res)
+                
+                if($res)
                 {
                     array_push($fields_to_pass, $field);
                 }                

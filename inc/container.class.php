@@ -1208,12 +1208,12 @@ HTML;
      *
      * @return boolean
      */
-    public function updateFieldsValues($data, $itemtype, $massiveaction = false)
+    public function updateFieldsValues($data, $item, $massiveaction = false)
     {
         /** @var DBmysql $DB */
         global $DB;
 
-        if (self::validateValues($data, $itemtype, $massiveaction) === false) {
+        if (self::validateValues($data, $item, $massiveaction) === false) {
             return false;
         }
 
@@ -1242,7 +1242,7 @@ HTML;
         $container_obj->getFromDB($data['plugin_fields_containers_id']);
 
         $items_id  = $data['items_id'];
-        $classname = self::getClassname($itemtype, $container_obj->fields['name']);
+        $classname = self::getClassname($item->getType(), $container_obj->fields['name']);
 
         $obj = new $classname();
         if ($obj->getFromDBByCrit(['items_id' => $items_id]) === false) {
@@ -1261,7 +1261,7 @@ HTML;
         self::constructHistory(
             $obj->input['plugin_fields_containers_id'],
             $items_id,
-            $itemtype,
+            $item->getType(),
             $obj->input,
             $obj,
         );
@@ -1448,7 +1448,7 @@ HTML;
      *
      * @return boolean
      */
-    public static function validateValues($data, $itemtype, $massiveaction)
+    public static function validateValues($data, $item, $massiveaction)
     {
         /** @var DBmysql $DB */
         global $DB;
@@ -1466,16 +1466,15 @@ HTML;
         ]);
 
         $status_value      = null;
-        $status_field_name = PluginFieldsStatusOverride::getStatusFieldName($itemtype);
+        $status_field_name = PluginFieldsStatusOverride::getStatusFieldName($item->getType());
         if ($container->fields['type'] === 'dom') {
             $status_value = $data[$status_field_name] ?? null;
         } else {
-            $relatedItem  = new $itemtype();
-            $status_value = $relatedItem->fields[$status_field_name] ?? null;
+            $status_value = $item->fields[$status_field_name] ?? null;
         }
         // Apply status overrides
         $status_overrides = $status_value !== null
-            ? PluginFieldsStatusOverride::getOverridesForItemtypeAndStatus($container->getID(), $itemtype, $status_value)
+            ? PluginFieldsStatusOverride::getOverridesForItemtypeAndStatus($container->getID(), $item->getType(), $status_value)
             : [];
 
         foreach ($status_overrides as $status_override) {
@@ -1522,6 +1521,7 @@ HTML;
             //translate label
             $field['itemtype'] = PluginFieldsField::getType();
             $field['label']    = PluginFieldsLabelTranslation::getLabelFor($field);
+            
             $dc = new PluginFieldsFieldDisplayCondition();
             $dmp = PluginTickethandlingEvent::vardump($data);
             Toolbox::logInFile("FieldD", "Data $dmp");
@@ -1529,7 +1529,7 @@ HTML;
             // Check mandatory fields
             if (
                 $field['mandatory'] == 1
-                //&& $dc->computeDisplayField($glpi_item, $field['id'])
+                && $dc->computeDisplayField($item, $field['id'])
                 && (
                     empty($value)
                     || (($field['type'] === 'dropdown' || preg_match('/^dropdown-.+/i', $field['type'])) && $value == 0)
@@ -1630,7 +1630,7 @@ HTML;
             $data['entities_id'] = $item->isEntityAssign() ? $item->getEntityID() : 0;
             //update data
             $container = new self();
-            if ($container->updateFieldsValues($data, $item->getType(), isset($_REQUEST['massiveaction']))) {
+            if ($container->updateFieldsValues($data, $item, isset($_REQUEST['massiveaction']))) {
                 return true;
             }
 

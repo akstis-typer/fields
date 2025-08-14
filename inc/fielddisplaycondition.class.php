@@ -426,7 +426,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
                 $displayCondition->getFromDB($data['id']);
                 $result = $displayCondition->checkCondition($item);
                 
-                if ($result === $use_or) {
+                if ($result == $use_or) {
                     return $result;
                 }
             }

@@ -726,7 +726,7 @@ class PluginFieldsContainer extends CommonDBTM
             $field_obj->deleteByCriteria([
                 'plugin_fields_fields_id' => $this->fields['id'],
             ]);
-
+            //
 
             //delete profiles
             $profile_obj = new PluginFieldsProfile();

@@ -721,11 +721,11 @@ class PluginFieldsContainer extends CommonDBTM
                 'plugin_fields_containers_id' => $this->fields['id'],
             ]);
 
-            ////delete field display condition
-            //$field_obj = new PluginFieldsFieldDisplayCondition();
-            //$field_obj->deleteByCriteria([
-            //    'plugin_fields_fields_id' => $this->fields['id'],
-            //]);
+            //delete field display condition
+            $field_obj = new PluginFieldsFieldDisplayCondition();
+            $field_obj->deleteByCriteria([
+                'plugin_fields_fields_id' => $this->fields['id'],
+            ]);
 
             //delete profiles
             $profile_obj = new PluginFieldsProfile();

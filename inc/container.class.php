@@ -1522,10 +1522,11 @@ HTML;
             //translate label
             $field['itemtype'] = PluginFieldsField::getType();
             $field['label']    = PluginFieldsLabelTranslation::getLabelFor($field);
-
+            $dc = new PluginFieldsFieldDisplayCondition();
             // Check mandatory fields
             if (
                 $field['mandatory'] == 1
+                && $dc->computeDisplayField($glpi_item, $field['id'])
                 && (
                     empty($value)
                     || (($field['type'] === 'dropdown' || preg_match('/^dropdown-.+/i', $field['type'])) && $value == 0)

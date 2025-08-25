@@ -7,8 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASE]
 
-### Fixed
+- Fix incompatibility of `multiple` dropdowns with `massiveaction`
+- Fix default value properly applied in multiple dropdown search options
+- Fix `search option` for default values in `multiple` dropdown
+- Fix shared dropdowns not displaying in `massiveaction`
 
+### Added
+- Add `replace` and `add` options in massive action for the multiple dropdowns fields
+
+## [1.21.22] - 2025-05-28
+
+### Fixed
+- Fix condition check logic for dropdown field values
 - Fix validation for mandatory multiple dropdown
 
 ## [1.21.21] - 2025-03-21

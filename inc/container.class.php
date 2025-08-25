@@ -1217,6 +1217,17 @@ HTML;
             return false;
         }
 
+        //Get object classname
+        $container_obj = new PluginFieldsContainer();
+        $container_obj->getFromDB($data['plugin_fields_containers_id']);
+
+        $items_id  = $data['items_id'];
+        $classname = self::getClassname($itemtype, $container_obj->fields['name']);
+
+        $obj = new $classname();
+
+        $exist = $obj->getFromDBByCrit(['items_id' => $items_id]);
+
         // Convert "multiple" values into a JSON string
         $multiple_fields_iterator = $DB->request([
             'FROM'  => PluginFieldsField::getTable(),
@@ -1232,12 +1243,20 @@ HTML;
                 $field_name = 'plugin_fields_' . $field_data['name'] . 'dropdowns_id';
             }
             if (array_key_exists($field_name, $data)) {
-                $data[$field_name] = json_encode($data[$field_name]);
+                if ($data['multiple_dropdown_action'] === 'append' && $exist) {
+                    // Add new values to existing ones
+                    $existing_values = json_decode($obj->fields[$field_name] ?? '[]', true);
+                    $new_values      = is_array($data[$field_name]) ? $data[$field_name] : [$data[$field_name]];
+                    $data[$field_name] = json_encode(array_unique(array_merge($existing_values, $new_values)));
+                } else {
+                    $data[$field_name] = json_encode($data[$field_name]);
+                }
             } elseif (array_key_exists('_' . $field_name . '_defined', $data)) {
                 $data[$field_name] = json_encode([]);
             }
         }
 
+<<<<<<< HEAD
         $container_obj = new PluginFieldsContainer();
         $container_obj->getFromDB($data['plugin_fields_containers_id']);
 
@@ -1246,6 +1265,9 @@ HTML;
 
         $obj = new $classname();
         if ($obj->getFromDBByCrit(['items_id' => $items_id]) === false) {
+=======
+        if ($exist === false) {
+>>>>>>> original/main
             // add fields data
             $obj->add($data);
         } else {
@@ -1737,6 +1759,7 @@ HTML;
 
                 return false;
             }
+
             $item->input['_plugin_fields_data'] = $data;
 
             return true;
@@ -1827,6 +1850,7 @@ HTML;
                 // ex my_dom[]
                 //in these conditions, the input is never sent by the browser
                 if ($field['multiple']) {
+                    $data['multiple_dropdown_action'] = $_POST['multiple_dropdown_action'];
                     //handle multi dropdown field
                     if ($field['type'] == 'dropdown') {
                         $multiple_key         = sprintf('plugin_fields_%sdropdowns_id', $field['name']);
@@ -1841,6 +1865,11 @@ HTML;
                         ) { //multi dropdown is empty or has been emptied
                             $data[$multiple_key] = [];
                             $has_fields          = true;
+                        } elseif (isset($_REQUEST['massiveaction'])) { // called from massiveaction
+                            if (isset($_POST[$multiple_key])) {
+                                $data[$multiple_key] = $_POST[$multiple_key];
+                                $has_fields          = true;
+                            }
                         }
                     }
 
@@ -1962,6 +1991,10 @@ HTML;
 
             $opt[$i]['pfields_type']      = $data['type'];
             $opt[$i]['pfields_fields_id'] = $data['field_id'];
+
+            if ($data['type'] === 'dropdown') {
+                $opt[$i]['is_multiple'] = $data['multiple'];
+            }
 
             if ($data['is_readonly']) {
                 $opt[$i]['massiveaction'] = false;

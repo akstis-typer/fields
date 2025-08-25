@@ -318,7 +318,6 @@ msgstr "соответствует регулярному выражению"
 msgid "You must specify an item type, search option and condition."
 msgstr "Необходимо указать тип элемента, вариант поиска и условие."
 
-<<<<<<< HEAD
 #: inc/containerdisplaycondition.class.php:104
 #: inc/containerdisplaycondition.class.php:136
 msgid "under"
@@ -350,7 +349,7 @@ msgstr[3] "Условия для скрытия поля"
 #: inc/container_display_condition.class.php:
 msgid "Edit condition to hide block"
 msgstr "Редактировать условие скрытия блока"
-=======
+
 #: inc/dropdown.class.php:78
 msgid "Updating generated dropdown files"
 msgstr "Обновление автоматически раскрывающегося списка файлов"
@@ -370,4 +369,4 @@ msgstr "Значение по умолчанию"
 #: ajax/field_specific_fields.php:121
 msgid "Default value will be configurable once field will be created."
 msgstr "Значение по умолчанию будет настраиваться после создания поля."
->>>>>>> original/main
+

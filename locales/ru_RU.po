@@ -318,11 +318,6 @@ msgstr "соответствует регулярному выражению"
 msgid "You must specify an item type, search option and condition."
 msgstr "Необходимо указать тип элемента, вариант поиска и условие."
 
-#: inc/containerdisplaycondition.class.php:104
-#: inc/containerdisplaycondition.class.php:136
-msgid "under"
-msgstr "под"
-
 #: templates/container_display_conditions.html.twig
 msgid "The engine is used for hide block when main object meets condition"
 msgstr "Блок скроется, когда условие выполнится"

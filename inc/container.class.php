@@ -1222,7 +1222,7 @@ HTML;
         $container_obj->getFromDB($data['plugin_fields_containers_id']);
 
         $items_id  = $data['items_id'];
-        $classname = self::getClassname($itemtype, $container_obj->fields['name']);
+        $classname = self::getClassname($item->getType(), $container_obj->fields['name']);
 
         $obj = new $classname();
 
@@ -1256,18 +1256,13 @@ HTML;
             }
         }
 
-<<<<<<< HEAD
         $container_obj = new PluginFieldsContainer();
         $container_obj->getFromDB($data['plugin_fields_containers_id']);
 
         $items_id  = $data['items_id'];
         $classname = self::getClassname($item->getType(), $container_obj->fields['name']);
 
-        $obj = new $classname();
-        if ($obj->getFromDBByCrit(['items_id' => $items_id]) === false) {
-=======
         if ($exist === false) {
->>>>>>> original/main
             // add fields data
             $obj->add($data);
         } else {

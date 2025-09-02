@@ -57,7 +57,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
     $display_condition = new PluginFieldsContainerDisplayCondition();
     if ($display_condition->computeDisplayContainer($item, $containers_id)) {
         $current_url = $_SERVER['REQUEST_URI'];
-        $in_simple_view = strpos($current_url, 'tracking.injector.php');
+        $in_simple_view = strpos($current_url, 'helpdesk.public.php') !== false || strpos($current_url, 'tracking.injector.php') !== false;
 
         $field_options = [
             'label_class' => $in_simple_view ? 'col-lg-3' : 'col-xxl-4',

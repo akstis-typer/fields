@@ -1639,7 +1639,7 @@ HTML;
             $data['entities_id'] = $item->isEntityAssign() ? $item->getEntityID() : 0;
             //update data
             $container = new self();
-            if ($container->updateFieldsValues($data, $item, isset($_REQUEST['massiveaction']))) {
+            if ($container->updateFieldsValues($data, $item->getType(), isset($_REQUEST['massiveaction']))) {
                 return true;
             }
 

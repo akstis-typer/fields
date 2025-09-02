@@ -56,11 +56,16 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
 
     $display_condition = new PluginFieldsContainerDisplayCondition();
     if ($display_condition->computeDisplayContainer($item, $containers_id)) {
+        $current_url = $_SERVER['REQUEST_URI'];
+        $in_simple_view = strpos($current_url, 'tracking.injector.php');
+
         $field_options = [
-            'label_class' => 'col-xxl-4',
-            'input_class' => 'col-xxl-8',
+            'label_class' => $in_simple_view ? 'col-lg-3' : 'col-xxl-4',
+            'input_class' => $in_simple_view ? 'col-lg-9' : 'col-xxl-8',
         ];
-        //echo "<div class='offset-md-1 col-md-8 col-xxl-6'>";
+        if($in_simple_view) {
+            echo "<div class='offset-md-1 col-md-8 col-xxl-6'>";
+        } 
         PluginFieldsField::showDomContainer(
             $containers_id,
             $item,
@@ -68,9 +73,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
             $subtype,
             $field_options,
         );
-        //echo "</div>";
-        $post = PluginTickethandlingEvent::vardump($_POST);
-        Toolbox::logInFile("Post", "Post: $post");
+        if($in_simple_view) {
+            echo "</div>";
+        }
     } else {
         echo '';
     }

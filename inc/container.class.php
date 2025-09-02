@@ -1202,12 +1202,12 @@ HTML;
      *
      * @return boolean
      */
-    public function updateFieldsValues($data, $item, $massiveaction = false)
+    public function updateFieldsValues($data, $itemtype, $massiveaction = false)
     {
         /** @var DBmysql $DB */
         global $DB;
-
-        if (self::validateValues($data, $item, $massiveaction) === false) {
+        $instance = new $itemtype();
+        if (self::validateValues($data, $instance, $massiveaction) === false) {
             return false;
         }
 
@@ -1216,7 +1216,7 @@ HTML;
         $container_obj->getFromDB($data['plugin_fields_containers_id']);
 
         $items_id  = $data['items_id'];
-        $classname = self::getClassname($item->getType(), $container_obj->fields['name']);
+        $classname = self::getClassname($itemtype, $container_obj->fields['name']);
 
         $obj = new $classname();
 
@@ -1254,7 +1254,7 @@ HTML;
         $container_obj->getFromDB($data['plugin_fields_containers_id']);
 
         $items_id  = $data['items_id'];
-        $classname = self::getClassname($item->getType(), $container_obj->fields['name']);
+        $classname = self::getClassname($itemtype, $container_obj->fields['name']);
 
         if ($exist === false) {
             // add fields data
@@ -1272,7 +1272,7 @@ HTML;
         self::constructHistory(
             $obj->input['plugin_fields_containers_id'],
             $items_id,
-            $item->getType(),
+            $itemtype,
             $obj->input,
             $obj,
         );
@@ -1454,7 +1454,7 @@ HTML;
      * display a message when not ok
      *
      * @param array   $data          Data send by form
-     * @param string  $itemtype      Item type
+     * @param CommonDBTM  $item      Item instace
      * @param boolean $massiveaction ?
      *
      * @return boolean

@@ -56,7 +56,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
 
     $display_condition = new PluginFieldsContainerDisplayCondition();
     if ($display_condition->computeDisplayContainer($item, $containers_id)) {
-        $current_url = $_SERVER['REQUEST_URI'];
+        $current_url = $_SERVER['HTTP_REFERER'];
         $in_simple_view = strpos($current_url, 'helpdesk.public.php') !== false || strpos($current_url, 'tracking.injector.php') !== false;
         $dmp = PluginTickethandlingEvent::vardump($_SERVER);
         Toolbox::logInFile("Server", "$dmp");

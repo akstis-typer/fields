@@ -69,6 +69,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
             $field_options,
         );
         //echo "</div>";
+        $post = PluginTickethandlingEvent::vardump($_POST);
+        Toolbox::logInFile("Post", "Post: $post");
     } else {
         echo '';
     }

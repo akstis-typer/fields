@@ -58,12 +58,13 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
     if ($display_condition->computeDisplayContainer($item, $containers_id)) {
         $current_url = $_SERVER['REQUEST_URI'];
         $in_simple_view = strpos($current_url, 'helpdesk.public.php') !== false || strpos($current_url, 'tracking.injector.php') !== false;
-
+        $dmp = PluginTickethandlingEvent::vardump($_SERVER);
+        Toolbox::logInFile("Server", "$dmp");
         $field_options = [
             'label_class' => $in_simple_view ? 'col-lg-3' : 'col-xxl-4',
             'input_class' => $in_simple_view ? 'col-lg-9' : 'col-xxl-8',
         ];
-        if($in_simple_view) {
+        if($in_simple_view === true) {
             echo "<div class='offset-md-1 col-md-8 col-xxl-6'>";
         } 
         PluginFieldsField::showDomContainer(
@@ -73,7 +74,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
             $subtype,
             $field_options,
         );
-        if($in_simple_view) {
+        if($in_simple_view === true) {
             echo "</div>";
         }
     } else {

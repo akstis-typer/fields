@@ -61,6 +61,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
             'input_class' => 'col-lg-9',
         ];
         //echo "<div class='offset-md-1 col-md-8 col-xxl-6'>";
+        $dmp = PluginTickethandlingEvent::vardump($_GET);
+        Toolbox::logInFile("Get", "GET REQUEST: $dmp");
         PluginFieldsField::showDomContainer(
             $containers_id,
             $item,
@@ -68,7 +70,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_fields_html') {
             $subtype,
             $field_options,
         );
-        //echo "</div>";
+        //  echo "</div>";
     } else {
         echo '';
     }

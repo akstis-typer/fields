@@ -447,6 +447,9 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
         
         $fields = array_merge($item->fields, $item->input);
 
+        if(!isset($fields[$searchOption['linkfield']]))
+            return false;
+
         switch ($condition) {
             case self::SHOW_CONDITION_EQ:
                 // '='

@@ -30,6 +30,8 @@
 
 class PluginFieldsToolbox
 {
+    static bool $use_debug = true;
+
     /**
      * Get a clean system name from a label.
      *
@@ -361,4 +363,25 @@ class PluginFieldsToolbox
 
         return $all_itemtypes;
     }
+
+    public static function debugLog($message)
+    {
+        if(!self::$use_debug) return;
+        Toolbox::logInFile(self::class, "$message\t");
+    }
+    public static function debugLogItem($message, $item)
+    {
+        if(!self::$use_debug) return;
+        $dmp = self::vardump($item);
+        Toolbox::logInFile(self::class, "$message $dmp\t");        
+    }
+     public static function vardump($data)
+    {
+        ob_start();
+        var_dump($data);
+        $output = ob_get_contents();
+        ob_end_clean();
+        return $output;
+    }
+
 }

@@ -416,6 +416,7 @@ class PluginFieldsFieldDisplayCondition extends CommonDBChild
 
     public function computeDisplayField($item, $field_id, $use_or = true)
     {
+        PluginFieldsToolbox::debugLogItem("Hey we got item on massive action!", $item);
         //load all condition for itemtype and field
         $displayCondition = new self();
         $found_dc         = $displayCondition->find(['itemtype' => get_class($item), 'plugin_fields_fields_id' => $field_id]);
